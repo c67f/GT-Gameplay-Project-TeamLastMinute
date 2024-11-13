@@ -60,7 +60,12 @@ public class PlayerInteract : MonoBehaviour
             // Clear the interactable object when nothing is in range and hide interaction text
             currentInteractable = null;
             interactionText.gameObject.SetActive(false);
-            currentAnimator.SetBool("isSpinning", false); 
+            if (currentAnimator != null)
+            {
+                currentAnimator.SetBool("isSpinning", false);
+                currentAnimator = null; // Reset currentAnimator since there's no interactable in range
+            }
+            
         }
     }
 }
