@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerBar : MonoBehaviour
@@ -23,6 +24,12 @@ public class TimerBar : MonoBehaviour
         if (timerBar.value <= 0)
         {
             Debug.Log("Game over!");
+            GameOverSceneLoad();
         }
+    }
+
+    void GameOverSceneLoad()
+    {
+        SceneManager.LoadSceneAsync("Game Over", LoadSceneMode.Single);
     }
 }
