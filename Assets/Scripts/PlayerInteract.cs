@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerInteract : MonoBehaviour
     public Camera playerCamera;  // Reference to the player's camera
     public LayerMask interactableLayer;  // Layer for interactable objects
     public TextMeshProUGUI interactionText;  // Reference to UI Text for displaying interaction prompt
+
+    public Slider timerBar;
 
     private Interactable currentInteractable;
     private Animator currentAnimator; // Animator for the interactable object
@@ -32,6 +35,10 @@ public class PlayerInteract : MonoBehaviour
             if (currentAnimator != null)
             {
                 currentAnimator.SetBool("isSpinning", true); // Set the animation parameter
+
+                Debug.Log(timerBar.value);
+                timerBar.value += GameManager.Instance.interactBonusTime; //added by Cal: when interacting, add time to the timer/health bar
+                Debug.Log(timerBar.value);
             }
         }
     }
