@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             currTasks.Add(PossibleTasksArray[Random.Range(0, 7)]);
         }
-        SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
+        //SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
     }
 
     // Start is called before the first frame update

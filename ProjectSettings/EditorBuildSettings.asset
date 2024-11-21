@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 7e5a36581e9ce7e4aaafdc82d959c6f2
+  - enabled: 1
+    path: Assets/Scenes/NewDayScreen.unity
+    guid: fbcb7e931e3110b4292f04bf5cb1e7cb
   m_configObjects: {}
