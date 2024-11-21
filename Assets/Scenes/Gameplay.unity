@@ -7737,6 +7737,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactBonusTime: 5
+  currTasks: 
+  maxTasks: 3
 --- !u!1001 &1759483953
 PrefabInstance:
   m_ObjectHideFlags: 0
