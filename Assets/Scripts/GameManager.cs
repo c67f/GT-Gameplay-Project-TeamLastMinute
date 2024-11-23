@@ -17,25 +17,51 @@ public class GameManager : MonoBehaviour
 
     public float interactBonusTime = 5.0f;
 
-    enum PossibleTasks
+    public string[] taskDescriptions =
     {
-        Wheel,
-        Sails,
-        Task3,
-        Task4,
-        Task5,
-        Task6,
-        Task7,
+        "Use the steering wheel",
+        "Trim the sails",
+        "Task2",
+        "Task3",
+        "Task4",
+        "Task5",
+        "Task6"
+    };
+    public class Task
+    {
+        public int num;
+        public string taskText;
+        public bool completed;
+        public Task(int a, bool b)
+        {
+            num = a;
+            taskText = _instance.taskDescriptions[a]; //needs the object because it's a public class?
+            completed = b;
+        }
     }
+
+
+    //enum PossibleTasks
+    //{
+    //    Wheel,
+    //    Sails,
+    //    Task3,
+    //    Task4,
+    //    Task5,
+    //    Task6,
+    //    Task7,
+    //}
 
     int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 };
 
-    static public List<int> currTasks = new List<int>();
-
     public int maxTasks;
+
+    static public List<Task> currTasks = new List<Task>();
+
 
     private void Awake()
     {
+        //Debug.Log(taskDescriptions[0]);
         //Singleton code:
         if (_instance != null && _instance != this)
         {
@@ -49,7 +75,8 @@ public class GameManager : MonoBehaviour
         //Pick 3 random tasks:
         for (int i = 0; i < maxTasks; i++)
         {
-            currTasks.Add(PossibleTasksArray[Random.Range(0, 7)]);
+            currTasks.Add(new Task(PossibleTasksArray[Random.Range(0, 7)], false));
+            Debug.Log(currTasks[0].taskText);
         }
         //SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
     }

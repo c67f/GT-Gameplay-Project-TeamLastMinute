@@ -11,7 +11,7 @@ public class HazardText : MonoBehaviour
 
     private void Awake()
     {
-        switch (GameManager.currTasks[0])
+        switch (GameManager.currTasks[0].num) //placeholder/incomplete: currently just looks at first task, not all 3
         {
             case 0:
                 hazardTextComponent.text = "-Fog";
