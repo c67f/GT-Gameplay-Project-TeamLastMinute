@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     public int maxTasks;
 
     static public List<Task> currTasks = new List<Task>();
+    static public int completedTasks = 0;
+    public int tasksNumGoal;
 
 
     private void Awake()
@@ -90,6 +92,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (completedTasks > tasksNumGoal)
+        {
+            goToTransitionScene();
+        }
+    }
+
+    void goToTransitionScene()
+    {
+        SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
     }
 }
