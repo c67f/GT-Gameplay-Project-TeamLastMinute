@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
             Debug.Log(currTasks[0].taskText);
         }
         //SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
+        completedTasks = 0;
+        Debug.Log("completedTasks reset to 0");
     }
 
     // Start is called before the first frame update
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (completedTasks > tasksNumGoal)
+        if (completedTasks >= tasksNumGoal)
         {
             goToTransitionScene();
         }

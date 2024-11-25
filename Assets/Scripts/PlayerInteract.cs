@@ -38,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
 
                 Debug.Log(timerBar.value);
                 timerBar.value += GameManager.Instance.interactBonusTime; //added by Cal: when interacting, add time to the timer/health bar
+                GameManager.completedTasks += 3;
                 Debug.Log(timerBar.value);
             }
         }

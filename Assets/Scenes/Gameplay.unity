@@ -8879,6 +8879,7 @@ MonoBehaviour:
   - Task5
   - Task6
   maxTasks: 3
+  tasksNumGoal: 3
 --- !u!1001 &1759483953
 PrefabInstance:
   m_ObjectHideFlags: 0
