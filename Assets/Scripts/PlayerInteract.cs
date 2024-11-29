@@ -12,6 +12,7 @@ public class PlayerInteract : MonoBehaviour
     public LayerMask interactableLayer;  // Layer for interactable objects
     public TextMeshProUGUI interactionText;  // Reference to UI Text for displaying interaction prompt
 
+
     public Slider timerBar;
 
     private Interactable currentInteractable;
@@ -28,52 +29,57 @@ public class PlayerInteract : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            // Interact with the object, triggering its animation
-            currentInteractable.Interact();
-
-            // Trigger the animation only when the player presses E
-            if (currentAnimator != null)
             {
-                currentAnimator.SetBool("isSpinning", true); // Set the animation parameter
+                currentInteractable.Interact();
 
-                Debug.Log(timerBar.value);
-                timerBar.value += GameManager.Instance.interactBonusTime; //added by Cal: when interacting, add time to the timer/health bar
-                GameManager.completedTasks += 3;
-                Debug.Log(timerBar.value);
+                if (currentAnimator != null && !string.IsNullOrEmpty(currentInteractable.animationParameter))
+                {
+                    currentAnimator.SetBool(currentInteractable.animationParameter, true);
+                    currentInteractable.MakeObjectVisible();
+                    // Example: Add bonus time and update tasks
+                    //Debug.Log(timerBar.value);
+                    //timerBar.value += GameManager.Instance.interactBonusTime;
+                    //GameManager.completedTasks += 3;
+                    //Debug.Log(timerBar.value);
+                }
             }
+
         }
-    }
 
-    void CheckForInteractable()
-    {
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, interactionRange, interactableLayer))
+        void CheckForInteractable()
         {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
-            if (interactable != null)
-            {
-                // Store the current interactable object and show interaction text
-                currentInteractable = interactable;
-                interactionText.gameObject.SetActive(true);
-                interactionText.text = "Press E to interact";  // Update interaction message if necessary
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            RaycastHit hit;
 
-                // Get the Animator of the current interactable object
-                currentAnimator = interactable.GetComponent<Animator>();
+            if (Physics.Raycast(ray, out hit, interactionRange, interactableLayer))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    // Store the current interactable object and show interaction text
+                    currentInteractable = interactable;
+                    interactionText.gameObject.SetActive(true);
+                    interactionText.text = "Press E to interact";  // Update interaction message if necessary
+
+                    // Get the Animator of the current interactable object
+                    currentAnimator = interactable.GetComponent<Animator>();
+                }
             }
-        }
-        else
-        {
-            // Clear the interactable object when nothing is in range and hide interaction text
-            currentInteractable = null;
-            interactionText.gameObject.SetActive(false);
-            if (currentAnimator != null)
+            else
             {
-                currentAnimator.SetBool("isSpinning", false);
+                // Clear the interactable object when nothing is in range and hide interaction text
+                interactionText.gameObject.SetActive(false);
+
+                // Only reset the animator if it is not null and animationParameter is valid
+                if (currentAnimator != null && currentInteractable != null && !string.IsNullOrEmpty(currentInteractable.animationParameter))
+                {
+                    currentAnimator.SetBool(currentInteractable.animationParameter, false);
+                }
+
+                currentInteractable = null;
                 currentAnimator = null; // Reset currentAnimator since there's no interactable in range
             }
-            
         }
+
     }
-}
+} 
