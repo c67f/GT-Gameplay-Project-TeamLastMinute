@@ -4,93 +4,69 @@ using UnityEngine;
 
 public class Anchor : MonoBehaviour
 {
-    public GameObject anchorPrefab;  // Reference to the anchor prefab
-    public Transform spawnPoint;    // Spawn point for the anchor
-    public Vector3 anchorScale = new Vector3(2f, 2f, 2f);  // Desired size of the anchor
-    public float moveSpeed = 5f;    // Speed for anchor movement before dropping
-    public float rotationAngleY = 90f;  // Y-axis rotation to face the player
-    public LayerMask rockLayer;     // Layer mask for rocks (used for collision detection)
+    public float moveSpeed = 5f;  // Speed at which the anchor moves horizontally
+    public float dropSpeed = 2f;  // Speed at which the anchor "falls" (moves downward)
+    public bool isDropped = false;  // Flag to check if the anchor is dropped
+    public LayerMask rockLayer;  // The layer mask for rocks (used for collision detection)
 
-    private GameObject currentAnchor;  // Reference to the spawned anchor instance
-    private Rigidbody currentAnchorRb; // Rigidbody for the current anchor
-    private bool isDropped = false;    // Flag to check if the anchor is dropped
+    private Vector3 initialPosition;
 
     void Start()
     {
-        SpawnAnchor();
+        initialPosition = transform.position;  // Store the initial position of the anchor
     }
 
     void Update()
     {
-        if (currentAnchor != null)
+        if (isDropped)
         {
-            if (isDropped)
-            {
-                // Let the anchor drop, but ensure it's stationary otherwise
-                currentAnchorRb.useGravity = true;
-            }
-            else
-            {
-                // Allow player to move the anchor until it's dropped
-                if (Input.GetKey(KeyCode.Space))  // Drop anchor when Space is pressed
-                {
-                    DropAnchor();
-                }
-                else
-                {
-                    MoveAnchor();
-                }
-            }
-        }
-    }
-
-    void SpawnAnchor()
-    {
-        if (spawnPoint != null && anchorPrefab != null)
-        {
-            // Instantiate the anchor at the spawn point
-            currentAnchor = Instantiate(anchorPrefab, spawnPoint.position, spawnPoint.rotation);
-
-            // Adjust the scale of the anchor
-            currentAnchor.transform.localScale = anchorScale;
-            currentAnchor.transform.rotation = Quaternion.Euler(0, rotationAngleY, 0);
-
-            // Disable physics until the anchor is dropped
-            currentAnchorRb = currentAnchor.GetComponent<Rigidbody>();
-            currentAnchorRb.useGravity = false;
-            //currentAnchorRb.isKinematic = true;  // Make the anchor stationary
+            // Let the anchor fall by adjusting its Y position
+            DropAnchor();
         }
         else
         {
-            Debug.LogWarning("Spawn Point or Anchor Prefab is not assigned!");
+            // Allow horizontal movement (left and right) with input
+            MoveAnchor();
+
+            if (Input.GetKeyDown(KeyCode.Space))  // Press Space to drop the anchor
+            {
+                isDropped = true;
+            }
         }
     }
 
     void MoveAnchor()
     {
-        if (currentAnchor == null) return;
-
-        // Control anchor's movement using player input
+        // Allow horizontal movement (left and right) with input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(horizontal, 0, vertical) * Time.deltaTime * moveSpeed;
-        currentAnchor.transform.Translate(move);
+        // Move the anchor along the x and z axes (left-right and forward-backward)
+        Vector3 move = new Vector3(0, vertical, horizontal) * moveSpeed * Time.deltaTime;
+        transform.Translate(move, Space.World);  // Translate the position without physics
     }
 
     void DropAnchor()
     {
-        if (currentAnchorRb != null)
+        // Adjust the Y position to simulate the anchor dropping
+        if (transform.position.y > 0f)  // Ensure it doesn't drop below ground (0 or another value)
         {
-            isDropped = true;
-            currentAnchorRb.isKinematic = false; // Allow physics to affect the anchor
+            transform.position = new Vector3(transform.position.x, transform.position.y - dropSpeed * Time.deltaTime, transform.position.z);
+        }
+        else
+        {
+            // Optionally, stop the drop once it reaches the ground
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);  // Stop at y=0 (ground level)
+            isDropped = false;  // Stop dropping once it reaches the ground
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Trigger entered by: {other.gameObject.name}");
+        if (other.gameObject.CompareTag("Rocks"))
+        {
+            Debug.Log("Anchor hit a rock");
+        }
     }
-
 
 }
