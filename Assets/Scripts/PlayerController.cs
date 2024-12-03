@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private string MouseYInput = "Mouse Y";
     float verticalRotation;
     public Camera mainCamera;
-    
+
     Vector3 moveDirection;
     //Vector3 moveForce = Vector3.zero;
     //Vector3 jumpForce = Vector3.zero;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(xForce+zForce);
 
         //Jump:
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             Debug.Log("is jumping");
             Jump();
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         h = Input.GetAxis("Horizontal") * playerSpeed;
         v = Input.GetAxis("Vertical") * playerSpeed;
-        //Debug.Log(Mathf.Abs(h));
+        Debug.Log(Mathf.Abs(h));
     }
 
     private void MovePlayer()
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 flatVelocity = new Vector3(thisRB.velocity.x, 0f, thisRB.velocity.z);
 
-        if(flatVelocity.magnitude > playerSpeed)
+        if (flatVelocity.magnitude > playerSpeed)
         {
             Vector3 limitedVelocity = flatVelocity.normalized * playerSpeed;
             thisRB.velocity = new Vector3(limitedVelocity.x, thisRB.velocity.y, limitedVelocity.z);
