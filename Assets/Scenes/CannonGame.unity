@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005411813, g: 0.0067167925, b: 0.011065109, a: 1}
+  m_IndirectSpecularColor: {r: 0.005412423, g: 0.006716945, b: 0.011078809, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6080,6 +6080,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6336562436715440596, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336562436715440596, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3bc632d2364ad045bd3b1a89b8f7c6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8579,6 +8587,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: isSpinning
   targetObject: {fileID: 0}
+  targetScene: 
 --- !u!1001 &987465588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9380,6 +9389,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
+  targetScene: 
 --- !u!95 &1136839287
 Animator:
   serializedVersion: 5
@@ -9807,6 +9817,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
+  targetScene: 
 --- !u!1001 &1270380893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11521,6 +11532,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsTall
   targetObject: {fileID: 377912026}
+  targetScene: 
 --- !u!1001 &1651835092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11798,6 +11810,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsOn
   targetObject: {fileID: 1182171962}
+  targetScene: 
 --- !u!1001 &1700070407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13792,6 +13805,7 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
+  targetScene: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
