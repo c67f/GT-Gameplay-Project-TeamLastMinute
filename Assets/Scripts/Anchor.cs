@@ -1,13 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Anchor : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Speed at which the anchor moves horizontally
     public float dropSpeed = 2f;  // Speed at which the anchor "falls" (moves downward)
     public bool isDropped = false;  // Flag to check if the anchor is dropped
-    public LayerMask rockLayer;  // The layer mask for rocks (used for collision detection)
+    public LayerMask rockLayer;  // Layer for collision detection
+    private bool hasCollided = false; // Tracks whether the anchor collided with something
+    public Slider timerBar;
 
     private Vector3 initialPosition;
 
@@ -20,53 +23,71 @@ public class Anchor : MonoBehaviour
     {
         if (isDropped)
         {
-            // Let the anchor fall by adjusting its Y position
             DropAnchor();
         }
         else
         {
-            // Allow horizontal movement (left and right) with input
             MoveAnchor();
-
             if (Input.GetKeyDown(KeyCode.Space))  // Press Space to drop the anchor
             {
-                isDropped = true;
+                Debug.Log("Dropping the anchor...");
+                isDropped = true;  // Start dropping the anchor
             }
         }
     }
 
     void MoveAnchor()
     {
-        // Allow horizontal movement (left and right) with input
+        // Allow player to move the anchor horizontally or vertically using WASD / arrow keys
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-        // Move the anchor along the x and z axes (left-right and forward-backward)
         Vector3 move = new Vector3(0, vertical, horizontal) * moveSpeed * Time.deltaTime;
-        transform.Translate(move, Space.World);  // Translate the position without physics
+        transform.Translate(move, Space.World);  // Move the anchor in world space
     }
 
     void DropAnchor()
     {
-        // Adjust the Y position to simulate the anchor dropping
-        if (transform.position.y > 0f)  // Ensure it doesn't drop below ground (0 or another value)
+        // Simulate the anchor "falling" downwards
+        if (transform.position.y > 0f)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - dropSpeed * Time.deltaTime, transform.position.z);
         }
         else
         {
-            // Optionally, stop the drop once it reaches the ground
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);  // Stop at y=0 (ground level)
-            isDropped = false;  // Stop dropping once it reaches the ground
+            // Anchor reaches the ground
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            isDropped = false; // Anchor has stopped dropping
+
+            // Check if no collision occurred
+            if (!hasCollided)
+            {
+                Debug.Log("Anchor is fine (didn't hit anything)."); // No collisions detected
+                SliderManager.Instance.AddTime(5);
+                StartCoroutine(TransitionToGameplay());
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
+        hasCollided = true; // Mark that the anchor has collided with something
+
+        // Check what the anchor hits
         if (other.gameObject.CompareTag("Rocks"))
         {
             Debug.Log("Anchor hit a rock");
+            SliderManager.Instance.SubtractTime(3);
         }
+
+
+        // Transition to Gameplay for either situation
+        StartCoroutine(TransitionToGameplay());
     }
 
+    private IEnumerator TransitionToGameplay()
+    {
+        Debug.Log("Transitioning to Gameplay...");
+        yield return new WaitForSeconds(2f); // Add a small pause before transitioning
+        SceneManager.LoadScene("Gameplay");
+    }
 }

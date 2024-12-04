@@ -1,35 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerBar : MonoBehaviour
 {
-    public Slider timerBar;
-    public float startHealth;
+    public Slider timerSlider; // Reference to the UI Slider
+    public float maxTime = 60f; // Maximum timer value
 
-    // Start is called before the first frame update
     void Start()
     {
-        timerBar.maxValue = startHealth;
-        timerBar.minValue = 0;
-        timerBar.value = timerBar.maxValue;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        timerBar.value = timerBar.value - Time.deltaTime;
-        if (timerBar.value <= 0)
+        // Initialize the slider to align with the current timer value in SliderManager
+        if (SliderManager.Instance != null)
         {
-            Debug.Log("Game over!");
-            GameOverSceneLoad();
+            timerSlider.maxValue = maxTime; // Set the slider's range
+            timerSlider.value = SliderManager.Instance.timer; // Sync slider to current timer
         }
     }
 
-    void GameOverSceneLoad()
+    void Update()
     {
-        SceneManager.LoadSceneAsync("Game Over", LoadSceneMode.Single);
+        // Make sure the timer only updates if time remains
+        if (SliderManager.Instance != null && SliderManager.Instance.timer > 0)
+        {
+            SliderManager.Instance.timer -= Time.deltaTime; // Decrement timer
+            timerSlider.value = SliderManager.Instance.timer; // Reflect the updated value on the slider
+        }
+
+        // Handle timer expiration
+        if (SliderManager.Instance != null && SliderManager.Instance.timer <= 0)
+        {
+            SliderManager.Instance.timer = 0; // Ensure timer doesn’t go negative
+            Debug.Log("Time's up!");
+            // Add any additional "time up" logic here (e.g., game over or scene transition)
+        }
     }
 }

@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
     public string interactMessage = "Press E to Interact";  // Text to display on interaction
     public string animationParameter = "";
     public GameObject targetObject;  // The object to be shown or interacted with
+    public string targetScene; 
     private Renderer targetRenderer;
 
     void Start()

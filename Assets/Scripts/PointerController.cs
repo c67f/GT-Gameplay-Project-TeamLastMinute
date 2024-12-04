@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class PointerController : MonoBehaviour
 {
@@ -11,10 +13,20 @@ public class PointerController : MonoBehaviour
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
 
+    public Slider timerBar;
+    public int maxKeyPresses = 3; // Maximum allowed key presses
+    public int currentKeyPresses = 0;
+
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();
         targetPosition = pointB.position;
+
+        //if (timerBar != null)
+        //{
+        //    timerBar.value = SliderManager.Instance.SliderValue;
+        //    //timerBar.maxValue = SliderManager.Instance.SliderMaxValue; // Restore max value if needed
+        //}
     }
 
     void Update()
@@ -43,14 +55,22 @@ public class PointerController : MonoBehaviour
 
     void CheckSuccess()
     {
-        // Check if the pointer is within the safe zone
-        if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null))
+        if (currentKeyPresses < maxKeyPresses)
         {
-            Debug.Log("Success!");
-        }
-        else
+            if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null))
+            {
+                SliderManager.Instance.AddTime(5);
+            }
+            else
+            {
+                SliderManager.Instance.SubtractTime(3);
+            }
+            currentKeyPresses++;
+        } else
         {
-            Debug.Log("Fail!");
+            SceneManager.LoadScene("Gameplay"); 
         }
     }
+
+
 }

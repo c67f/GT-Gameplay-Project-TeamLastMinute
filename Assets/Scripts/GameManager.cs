@@ -96,12 +96,13 @@ public class GameManager : MonoBehaviour
     {
         if (completedTasks >= tasksNumGoal)
         {
-            goToTransitionScene();
+            //goToTransitionScene();
+            Debug.Log("go to transition screen"); 
         }
     }
 
-    void goToTransitionScene()
-    {
-        SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
-    }
+    //void goToTransitionScene()
+    //{
+    //    SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
+    //}
 }

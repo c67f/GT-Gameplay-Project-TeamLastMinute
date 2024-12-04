@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewDayScreen.unity
     guid: fbcb7e931e3110b4292f04bf5cb1e7cb
+  - enabled: 1
+    path: Assets/Scenes/RudderGame.unity
+    guid: 663d87ced36314a1c8f6aab8a9e886b0
+  - enabled: 1
+    path: Assets/Scenes/PulleyGame.unity
+    guid: 81bbafd2968c84a6382515749d0c6472
+  - enabled: 1
+    path: Assets/Scenes/CannonGame.unity
+    guid: 08553d05a41e8434998cf833bc4663b4
+  - enabled: 1
+    path: Assets/Scenes/Anchor_Game.unity
+    guid: 1ce070ec740814aad972fc9ba769a95b
   m_configObjects: {}
