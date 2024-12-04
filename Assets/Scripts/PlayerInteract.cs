@@ -111,8 +111,15 @@ public class PlayerInteract : MonoBehaviour
         // Transition to the target scene
         if (currentInteractable != null && !string.IsNullOrEmpty(currentInteractable.targetScene))
         {
-            Debug.Log("Transitioning to scene: " + currentInteractable.targetScene);
-            SceneManager.LoadScene(currentInteractable.targetScene);
+            if (currentInteractable.taskID == GameManager.currTasks[0].num || currentInteractable.taskID == GameManager.currTasks[1].num || currentInteractable.taskID == GameManager.currTasks[2].num)
+            {
+                Debug.Log("Transitioning to scene: " + currentInteractable.targetScene);
+                SceneManager.LoadScene(currentInteractable.targetScene);
+            }
+            else
+            {
+                Debug.Log("Object is not one of the current tasks");
+            }    
         }
         else
         {

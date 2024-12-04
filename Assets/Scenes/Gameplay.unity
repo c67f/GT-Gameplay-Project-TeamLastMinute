@@ -1461,7 +1461,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &206186461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2370,6 +2370,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!95 &377048662
 Animator:
   serializedVersion: 5
@@ -3136,6 +3137,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!95 &612263335
 Animator:
   serializedVersion: 5
@@ -4716,7 +4718,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &920378232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5211,7 +5213,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &1018764147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5986,6 +5988,7 @@ MonoBehaviour:
   animationParameter: IsTall
   targetObject: {fileID: 8532279}
   targetScene: 
+  taskID: 0
 --- !u!95 &1156832275
 Animator:
   serializedVersion: 5
@@ -7075,6 +7078,7 @@ MonoBehaviour:
   animationParameter: IsOn
   targetObject: {fileID: 1119570102}
   targetScene: PulleyGame
+  taskID: 0
 --- !u!95 &1320116034
 Animator:
   serializedVersion: 5
@@ -8712,6 +8716,7 @@ MonoBehaviour:
   animationParameter: 
   targetObject: {fileID: 0}
   targetScene: Anchor_Game
+  taskID: 0
 --- !u!95 &1703813333
 Animator:
   serializedVersion: 5
@@ -9467,8 +9472,7 @@ MonoBehaviour:
   - Task4
   - Task5
   - Task6
-  maxTasks: 0
-  tasksNumGoal: 0
+  tasksNumGoal: 3
 --- !u!1001 &1759483953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9735,6 +9739,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!95 &1808445231
 Animator:
   serializedVersion: 5
@@ -10358,6 +10363,7 @@ MonoBehaviour:
   animationParameter: isSpinning
   targetObject: {fileID: 0}
   targetScene: RudderGame
+  taskID: 0
 --- !u!95 &1889665581
 Animator:
   serializedVersion: 5
@@ -16084,7 +16090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -66.00012, y: -0.000030517578}
+  m_AnchoredPosition: {x: -66, y: -0.000030517578}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078573718
@@ -16102,6 +16108,10 @@ MonoBehaviour:
   task0: {fileID: 576998951}
   task1: {fileID: 136549465}
   task2: {fileID: 2033168969}
+  togglesArray:
+  - {fileID: 913434002}
+  - {fileID: 203072027}
+  - {fileID: 1013960425}
 --- !u!4 &2113843139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409734, guid: 76e8f3483e59e9245a3d8a6ccbed01ac, type: 3}

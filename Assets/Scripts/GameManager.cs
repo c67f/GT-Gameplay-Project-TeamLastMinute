@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,22 +23,26 @@ public class GameManager : MonoBehaviour
         "Check the compass"
     };
 
+    public static int maxTasks = 3; // Number of tasks to assign
+
+
     public class Task
     {
         public int num; // Task ID
         public string taskText; // Description
         public bool completed; // Whether the task is completed
+        public Toggle checkmark; //the UI checkmark in the checklist
 
         public Task(int a, bool b)
         {
             num = a;
             taskText = GameManager.Instance.taskDescriptions[a];
             completed = b;
+            //checkmark = c;
         }
     }
 
     int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 }; // Possible task IDs
-    public int maxTasks = 3; // Number of tasks to assign
     public static List<Task> currTasks = new List<Task>(); // Active tasks
     public static int completedTasks = 0; // Completed tasks counter
     public int tasksNumGoal = 3; // Goal: number of tasks to complete
@@ -61,6 +66,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Tasks already initialized. Skipping reinitialization.");
+
         }
     }
 
@@ -82,12 +88,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        foreach(Task task in currTasks)
+        {
+            task.checkmark.isOn = task.completed;
+        }
         if (completedTasks >= tasksNumGoal)
         {
             Debug.Log("All tasks completed. Transitioning...");
             //GoToTransitionScene();
         }
     }
+
 
     public void CompleteTask(int taskId)
     {

@@ -70,7 +70,22 @@ public class PointerController : MonoBehaviour
             currentKeyPresses++;
         } else
         {
-            SceneManager.LoadScene("Gameplay"); 
+            //Task completed code (feel free to move if this is the wrong spot
+            GameManager.Task correspondingTask = GameManager.currTasks[0]; //placeholder
+            for (int i = 0; i < GameManager.maxTasks; i++)
+            {
+                if (GameManager.currTasks[i].num == 0) //the wheel task's id is 0
+                {
+                    correspondingTask = GameManager.currTasks[i];
+                }
+            }
+            correspondingTask.completed = true;
+            GameManager.completedTasks++;
+
+            Debug.Log($"task 1 is complete: {GameManager.currTasks[0].completed}");
+            Debug.Log($"task 2 is complete: {GameManager.currTasks[1].completed}");
+            Debug.Log($"task 3 is complete: {GameManager.currTasks[2].completed}");
+            SceneManager.LoadScene("Gameplay");
         }
     }
 
