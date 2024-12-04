@@ -714,7 +714,7 @@ Transform:
   m_GameObject: {fileID: 89641960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.7, z: -439.6}
+  m_LocalPosition: {x: -0.44, y: 22.57, z: -468.1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1542,6 +1542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 241072546}
   - component: {fileID: 241072545}
+  - component: {fileID: 241072547}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1622,6 +1623,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 340}
   m_SizeDelta: {x: 1000, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &241072547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241072544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6027f9751e1866c49b15fe6399cd0de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 241072545}
+  maxTime: 60
 --- !u!1001 &260866813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9273,7 +9288,7 @@ Transform:
   m_GameObject: {fileID: 1748412517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -441.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9295,13 +9310,13 @@ MonoBehaviour:
   taskDescriptions:
   - Use the steering wheel
   - Trim the sails
-  - Task2
-  - Task3
+  - Clear the rigging area
+  - Collect the cannonballs
   - Task4
   - Task5
   - Task6
-  maxTasks: 3
-  tasksNumGoal: 3
+  maxTasks: 0
+  tasksNumGoal: 0
 --- !u!1001 &1759483953
 PrefabInstance:
   m_ObjectHideFlags: 0

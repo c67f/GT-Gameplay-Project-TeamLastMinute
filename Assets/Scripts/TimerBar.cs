@@ -23,6 +23,9 @@ public class TimerBar : MonoBehaviour
         {
             SliderManager.Instance.timer -= Time.deltaTime; // Decrement timer
             timerSlider.value = SliderManager.Instance.timer; // Reflect the updated value on the slider
+        } else
+        {
+            return; 
         }
 
         // Handle timer expiration

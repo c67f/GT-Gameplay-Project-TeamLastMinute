@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,100 +7,107 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance
     {
-        get
-        {
-            return _instance;
-        }
+        get { return _instance; }
     }
 
     public float interactBonusTime = 5.0f;
 
-    public string[] taskDescriptions =
-    {
+    public string[] taskDescriptions = {
         "Use the steering wheel",
         "Trim the sails",
-        "Task2",
-        "Task3",
-        "Task4",
-        "Task5",
-        "Task6"
+        "Deploy the anchor",
+        "Secure the cannonballs",
+        "Clear the rigging area",
+        "Adjust the rigging",
+        "Check the compass"
     };
+
     public class Task
     {
-        public int num;
-        public string taskText;
-        public bool completed;
+        public int num; // Task ID
+        public string taskText; // Description
+        public bool completed; // Whether the task is completed
+
         public Task(int a, bool b)
         {
             num = a;
-            taskText = _instance.taskDescriptions[a]; //needs the object because it's a public class?
+            taskText = GameManager.Instance.taskDescriptions[a];
             completed = b;
         }
     }
 
-
-    //enum PossibleTasks
-    //{
-    //    Wheel,
-    //    Sails,
-    //    Task3,
-    //    Task4,
-    //    Task5,
-    //    Task6,
-    //    Task7,
-    //}
-
-    int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 };
-
-    public int maxTasks;
-
-    static public List<Task> currTasks = new List<Task>();
-    static public int completedTasks = 0;
-    public int tasksNumGoal;
-
+    int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 }; // Possible task IDs
+    public int maxTasks = 3; // Number of tasks to assign
+    public static List<Task> currTasks = new List<Task>(); // Active tasks
+    public static int completedTasks = 0; // Completed tasks counter
+    public int tasksNumGoal = 3; // Goal: number of tasks to complete
 
     private void Awake()
     {
-        //Debug.Log(taskDescriptions[0]);
-        //Singleton code:
+        // Singleton setup
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
-        } 
+            Destroy(gameObject); // Prevent duplicates
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject); // Keep GameManager persistent
+
+        if (currTasks.Count == 0)
+        {
+            InitializeTasks();
+        }
         else
         {
-            _instance = this;
+            Debug.Log("Tasks already initialized. Skipping reinitialization.");
         }
+    }
 
-        //Pick 3 random tasks:
+    private void InitializeTasks()
+    {
+        currTasks.Clear(); // Clear previous tasks
+        completedTasks = 0; // Reset completion counter
+        Debug.Log("Initializing GameManager tasks...");
+
         for (int i = 0; i < maxTasks; i++)
         {
-            currTasks.Add(new Task(PossibleTasksArray[Random.Range(0, 7)], false));
-            Debug.Log(currTasks[0].taskText);
+            int randomTaskIndex = Random.Range(0, PossibleTasksArray.Length);
+            currTasks.Add(new Task(randomTaskIndex, false)); // Add task to list
+            Debug.Log($"Task {currTasks[i].num}: {currTasks[i].taskText} (Completed: {currTasks[i].completed})");
         }
-        //SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
-        completedTasks = 0;
-        Debug.Log("completedTasks reset to 0");
+
+        Debug.Log($"GameManager: Initialized {currTasks.Count} tasks.");
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-     //Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (completedTasks >= tasksNumGoal)
         {
-            //goToTransitionScene();
-            Debug.Log("go to transition screen"); 
+            Debug.Log("All tasks completed. Transitioning...");
+            //GoToTransitionScene();
         }
     }
 
-    //void goToTransitionScene()
-    //{
-    //    SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
-    //}
+    public void CompleteTask(int taskId)
+    {
+        foreach (Task task in currTasks)
+        {
+            if (task.num == taskId && !task.completed)
+            {
+                task.completed = true; // Mark task as completed
+                completedTasks++; // Increment completed counter
+                Debug.Log($"Task Completed: {task.taskText} (ID: {task.num})");
+
+                return;
+            }
+        }
+
+        Debug.LogWarning($"Task with ID {taskId} not found or already completed.");
+    }
+
+    private void GoToTransitionScene()
+    {
+        SceneManager.LoadSceneAsync("NewDayScreen", LoadSceneMode.Single);
+    }
 }

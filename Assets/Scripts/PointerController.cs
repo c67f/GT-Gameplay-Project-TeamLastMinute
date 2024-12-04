@@ -17,6 +17,8 @@ public class PointerController : MonoBehaviour
     public int maxKeyPresses = 3; // Maximum allowed key presses
     public int currentKeyPresses = 0;
 
+    public int taskID = 0;
+
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();

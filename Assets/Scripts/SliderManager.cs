@@ -20,6 +20,11 @@ public class SliderManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        Debug.Log("SliderManager timer is initialized to: " + timer);
+    }
+
     private void Update()
     {
         if (!isPaused && timer > 0)

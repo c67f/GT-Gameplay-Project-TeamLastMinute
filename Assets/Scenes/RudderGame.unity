@@ -1478,6 +1478,7 @@ MonoBehaviour:
   timerBar: {fileID: 435177719}
   maxKeyPresses: 3
   currentKeyPresses: 0
+  taskID: 0
 --- !u!114 &191335931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8567,6 +8568,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2299638097208331545, guid: 37ad98a8d28f9a740969722fe002838a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 622310845}
+    - targetCorrespondingSourceObject: {fileID: 2299638097208331545, guid: 37ad98a8d28f9a740969722fe002838a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 622310847}
   m_SourcePrefab: {fileID: 100100000, guid: 37ad98a8d28f9a740969722fe002838a, type: 3}
 --- !u!4 &622310843 stripped
 Transform:
@@ -8586,7 +8590,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622310844}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e044295c59511404abe8af13516014b6, type: 2}
   m_CullingMode: 0
@@ -8606,7 +8610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622310844}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 940e736d07ca747aca95529ce5ef2270, type: 3}
   m_Name: 
@@ -8615,6 +8619,20 @@ MonoBehaviour:
   animationParameter: isSpinning
   targetObject: {fileID: 0}
   targetScene: 
+--- !u!114 &622310847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622310844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6027f9751e1866c49b15fe6399cd0de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 435177719}
+  maxTime: 60
 --- !u!1001 &625635612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9347,52 +9365,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6862359637103801186, guid: 49423ea33ebcf17448ff75f4ee393e92, type: 3}
   m_PrefabInstance: {fileID: 910967412}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &926767088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 926767090}
-  - component: {fileID: 926767089}
-  m_Layer: 0
-  m_Name: SlideManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &926767089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926767088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229833d90ebd04261aa6d83e6c4b7a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 60
-  isPaused: 0
---- !u!4 &926767090
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926767088}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 526, y: 429.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959583047
 GameObject:
   m_ObjectHideFlags: 0
@@ -10180,8 +10152,6 @@ GameObject:
   - component: {fileID: 1193778447}
   - component: {fileID: 1193778446}
   - component: {fileID: 1193778445}
-  - component: {fileID: 1193778444}
-  - component: {fileID: 1193778443}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10189,40 +10159,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1193778443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193778442}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76703299c56ad45e487285682457d639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayDuration: 120
-  maxDays: 3
-  dayText: {fileID: 0}
---- !u!114 &1193778444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193778442}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dacbe35438a0447498ddf2a001ef411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionRange: 3
-  playerCamera: {fileID: 1305398236}
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  interactionText: {fileID: 0}
-  timerBar: {fileID: 0}
 --- !u!114 &1193778445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12292,50 +12228,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1992431076423635556, guid: 90e100214a56f574db3adf1378c57d16, type: 3}
   m_PrefabInstance: {fileID: 1413562000}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1423802890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1423802892}
-  - component: {fileID: 1423802891}
-  m_Layer: 0
-  m_Name: SliderInitializer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1423802891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423802890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdfb3ed74737947b991582c2d06cd19d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1423802892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423802890}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439292052
 GameObject:
   m_ObjectHideFlags: 0
@@ -16124,52 +16016,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108222687}
-  - component: {fileID: 2108222686}
-  - component: {fileID: 2108222685}
+  - component: {fileID: 2108222688}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SliderManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2108222685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108222684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aab1f41f9f5d6140a9784fce7fc201b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactBonusTime: 5
-  taskDescriptions:
-  - Use the steering wheel
-  - Trim the sails
-  - Task2
-  - Task3
-  - Task4
-  - Task5
-  - Task6
-  maxTasks: 3
-  tasksNumGoal: 3
---- !u!114 &2108222686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108222684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6027f9751e1866c49b15fe6399cd0de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerSlider: {fileID: 435177719}
-  maxTime: 60
 --- !u!4 &2108222687
 Transform:
   m_ObjectHideFlags: 0
@@ -16185,6 +16039,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108222688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108222684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229833d90ebd04261aa6d83e6c4b7a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 60
+  isPaused: 0
 --- !u!1001 &2108264886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16494,5 +16362,3 @@ SceneRoots:
   - {fileID: 1623588794}
   - {fileID: 2108222687}
   - {fileID: 2017559732}
-  - {fileID: 1423802892}
-  - {fileID: 926767090}

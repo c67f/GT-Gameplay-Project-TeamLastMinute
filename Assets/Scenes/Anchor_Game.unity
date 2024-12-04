@@ -11356,37 +11356,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1265930944}
   - component: {fileID: 1265930943}
-  - component: {fileID: 1265930942}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1265930942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265930941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aab1f41f9f5d6140a9784fce7fc201b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactBonusTime: 5
-  taskDescriptions:
-  - Use the steering wheel
-  - Trim the sails
-  - Task2
-  - Task3
-  - Task4
-  - Task5
-  - Task6
-  maxTasks: 3
-  tasksNumGoal: 3
 --- !u!114 &1265930943
 MonoBehaviour:
   m_ObjectHideFlags: 0

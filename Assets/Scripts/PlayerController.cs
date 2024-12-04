@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         h = Input.GetAxis("Horizontal") * playerSpeed;
         v = Input.GetAxis("Vertical") * playerSpeed;
-        Debug.Log(Mathf.Abs(h));
+        //Debug.Log(Mathf.Abs(h));
     }
 
     private void MovePlayer()
