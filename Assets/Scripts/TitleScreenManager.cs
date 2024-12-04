@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadMainScene : MonoBehaviour
+public class TitleScreenManager : MonoBehaviour
 {
-    public Button startDayButton;
+    public Button startGameButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        startDayButton.onClick.AddListener(goToMainScene);
+        startGameButton.onClick.AddListener(goToMainScene);
     }
 
     // Update is called once per frame

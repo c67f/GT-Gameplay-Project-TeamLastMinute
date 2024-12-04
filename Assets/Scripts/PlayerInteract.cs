@@ -39,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
                     // Example: Add bonus time and update tasks
                     //Debug.Log(timerBar.value);
                     //timerBar.value += GameManager.Instance.interactBonusTime;
-                    //GameManager.completedTasks += 3;
+                    GameManager.completedTasks += 3;
                     //Debug.Log(timerBar.value);
                 }
             }
