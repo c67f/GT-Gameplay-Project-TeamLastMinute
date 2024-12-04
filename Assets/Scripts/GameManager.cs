@@ -88,10 +88,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        foreach(Task task in currTasks)
-        {
-            task.checkmark.isOn = task.completed;
-        }
         if (completedTasks >= tasksNumGoal)
         {
             Debug.Log("All tasks completed. Transitioning...");
