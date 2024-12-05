@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public string[] taskDescriptions = {
         "Use the steering wheel",
-        "Trim the sails",
+        "Clear the rigging area",
         "Deploy the anchor",
         "Secure the cannonballs"
     };

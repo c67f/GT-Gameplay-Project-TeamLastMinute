@@ -7716,8 +7716,8 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: IsOn
   targetObject: {fileID: 1119570102}
-  targetScene: PulleyGame
-  taskID: 1
+  targetScene: Anchor_Game
+  taskID: 2
   interactionSound: {fileID: 8300000, guid: 3428a069982ec4ef0b642003264e1063, type: 3}
 --- !u!95 &1320116034
 Animator:
@@ -9488,8 +9488,8 @@ MonoBehaviour:
   interactMessage: Press E to Interact
   animationParameter: 
   targetObject: {fileID: 0}
-  targetScene: Anchor_Game
-  taskID: 2
+  targetScene: PulleyGame
+  taskID: 1
   interactionSound: {fileID: 8300000, guid: 3428a069982ec4ef0b642003264e1063, type: 3}
 --- !u!95 &1703813333
 Animator:

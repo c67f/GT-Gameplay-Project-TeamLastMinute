@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening Cutscene.unity
     guid: c8c14d612b8318f4c8f7ed2ea1e00011
   - enabled: 1
-    path: Assets/Scenes/Game Over.unity
+    path: Assets/Scenes/EndScene.unity
     guid: 1f0ed3fa09d17482c9fbf287ee778dc5
   m_configObjects: {}
