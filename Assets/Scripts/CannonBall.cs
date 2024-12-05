@@ -11,6 +11,7 @@ public class Cannonball : MonoBehaviour
     {
         // Automatically return to gameplay after lifetime expires
         Invoke(nameof(TransitionToGameplay), lifetime);
+        collected = 0; 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,6 +39,7 @@ public class Cannonball : MonoBehaviour
         // Check if all cannonballs are collected
         if (collected >= 5) // Modify this number if spawning more than 5 cannonballs
         {
+            collected = 0; 
             TransitionToGameplay();
         }
     }

@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour
     private void Start()
     {
         // Ensure the cursor remains visible and unlocked during the mini-game
+        ResetMiniGame(); 
         Cursor.lockState = CursorLockMode.None;       // Unlock the cursor
         Cursor.visible = true;                       // Make the cursor visible
     }
@@ -34,6 +35,14 @@ public class DragDrop : MonoBehaviour
     private void TransitionToGameplay()
     {
         Debug.Log("Transitioning to Gameplay...");
+        ResetMiniGame();
         SceneManager.LoadScene("Gameplay"); // Replace with the correct scene name
+        
+    }
+    public static void ResetMiniGame()
+    {
+        // Reset all static variables for this mini-game
+        cannon_collected = 0;
+        Debug.Log("Cannonball mini-game has been reset.");
     }
 }

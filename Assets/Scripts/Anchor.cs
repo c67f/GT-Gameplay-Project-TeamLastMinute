@@ -80,7 +80,7 @@ public class Anchor : MonoBehaviour
         }
 
 
-        // Transition to Gameplay for either situation
+        
         StartCoroutine(TransitionToGameplay());
     }
 
@@ -88,6 +88,16 @@ public class Anchor : MonoBehaviour
     {
         Debug.Log("Transitioning to Gameplay...");
         yield return new WaitForSeconds(2f); // Add a small pause before transitioning
+        ResetMiniGame(); 
         SceneManager.LoadScene("Gameplay");
+    }
+
+    public void ResetMiniGame()
+    {
+        
+        Debug.Log("Resetting Anchor mini-game...");
+        transform.position = initialPosition; // Return anchor to its starting position
+        isDropped = false;  // Reset drop state
+        hasCollided = false; // Reset collision flag
     }
 }

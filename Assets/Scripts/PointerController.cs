@@ -23,6 +23,7 @@ public class PointerController : MonoBehaviour
     {
         pointerTransform = GetComponent<RectTransform>();
         targetPosition = pointB.position;
+        currentKeyPresses = 0; 
 
         //if (timerBar != null)
         //{
@@ -70,6 +71,7 @@ public class PointerController : MonoBehaviour
             currentKeyPresses++;
         } else
         {
+            currentKeyPresses = 0; 
             //Task completed code (feel free to move if this is the wrong spot
             GameManager.Task correspondingTask = GameManager.currTasks[0]; //placeholder
             for (int i = 0; i < GameManager.maxTasks; i++)
