@@ -7,24 +7,35 @@ public class CameraLoadIn : MonoBehaviour
 {
     public PostProcessVolume PPV;
     Vignette v;
+    LensDistortion ld;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     void Awake()
     {
-        //StartCoroutine(CameraLoad);
+        Debug.Log("test");
+        StartCoroutine(CameraLoad());
+
     }
-    /*IEnumerator CameraLoad()
+    IEnumerator CameraLoad()
     {
-        v = PPV.GetComponent<Vignette>();
-        v.intensity.value = 70.0f;
-        while (v.intensity.value > 0.1)
+
+        v = PPV.profile.GetSetting<Vignette>(); //GetComponentInChildren<Vignette>();
+        ld = PPV.profile.GetSetting<LensDistortion>();
+
+        v.intensity.Override(0.9f);
+        ld.intensity.Override(-70);
+        while (v.intensity.value > 0.1f)
         {
-            v.intensity.value -= 1f;
-            retu
+            v.intensity.Override(v.intensity.value - 0.01f);
+            //Debug.Log(v.intensity.value);
+            ld.intensity.Override(ld.intensity.value + 0.75f);
+            //Debug.Log(ld.intensity.value);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
-        v.intensity.value = 0;
-    }*/
+        Debug.Log(v.intensity.value);
+        v.intensity.Override(0f);
+        ld.intensity.Override(0f);
+    }
 }
