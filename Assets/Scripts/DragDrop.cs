@@ -1,46 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-// Used this YouTube tutorial to implement drag and dop functionality
-// https://www.youtube.com/watch?v=oZie8X_2aAU
+using UnityEngine.SceneManagement;
 
 public class DragDrop : MonoBehaviour
 {
-    Vector3 offset;
-    public string destinationTag = "DropArea";
+    public static int cannon_collected = 0;            // Global counter for collected cannonballs
+    public static int total_cannonballs = 4;          // Total cannonballs required to win
 
-    void OnMouseDown()
+    private void OnMouseDown()
     {
-        offset = transform.position - MouseWorldPosition();
-        transform.GetComponent<Collider>().enabled = false;
-    }
+        Debug.Log($"Cannonball collected! Current count: {cannon_collected + 1}");
 
-    void OnMouseDrag()
-    {
-        transform.position = MouseWorldPosition() + offset;
-    }
+        // Increment the global collection counter
+        cannon_collected++;
 
-    void OnMouseUp()
-    {
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        RaycastHit hitInfo;
-        if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
+        // Destroy this cannonball to indicate it was collected
+        Destroy(gameObject);
+
+        // Check if all cannonballs are collected
+        if (cannon_collected >= total_cannonballs)
         {
-            if (hitInfo.transform.tag == destinationTag)
-            {
-                transform.position = hitInfo.transform.position;
-                Debug.Log("1 in");
-            }
+            Debug.Log("All cannonballs collected! Transitioning to Gameplay...");
+            TransitionToGameplay(); // Transition to the next scene
         }
-        transform.GetComponent<Collider>().enabled = true;
     }
 
-    Vector3 MouseWorldPosition()
+    private void TransitionToGameplay()
     {
-        var mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        Debug.Log("Transitioning to Gameplay...");
+        SceneManager.LoadScene("Gameplay"); // Replace with the correct scene name
     }
 }

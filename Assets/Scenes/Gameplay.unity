@@ -7103,7 +7103,7 @@ MonoBehaviour:
   animationParameter: IsOn
   targetObject: {fileID: 1119570102}
   targetScene: PulleyGame
-  taskID: 0
+  taskID: 1
 --- !u!95 &1320116034
 Animator:
   serializedVersion: 5
