@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class TimerBar : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class TimerBar : MonoBehaviour
         {
             SliderManager.Instance.timer = 0; // Ensure timer doesn’t go negative
             Debug.Log("Time's up!");
+            SceneManager.LoadScene("EndScene"); 
             // Add any additional "time up" logic here (e.g., game over or scene transition)
         }
     }
