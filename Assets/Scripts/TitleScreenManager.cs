@@ -11,7 +11,7 @@ public class TitleScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startGameButton.onClick.AddListener(goToMainScene);
+        startGameButton.onClick.AddListener(goToStartingCutscene);
     }
 
     // Update is called once per frame
@@ -20,8 +20,8 @@ public class TitleScreenManager : MonoBehaviour
 
     }
 
-    void goToMainScene()
+    void goToStartingCutscene()
     {
-        SceneManager.LoadSceneAsync("Gameplay", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Opening Cutscene", LoadSceneMode.Single);
     }
 }
