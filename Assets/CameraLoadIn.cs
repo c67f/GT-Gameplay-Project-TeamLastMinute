@@ -14,8 +14,10 @@ public class CameraLoadIn : MonoBehaviour
     }
     void Awake()
     {
-        Debug.Log("test");
-        StartCoroutine(CameraLoad());
+        if (GameManager.currDay > 1)
+        {
+            StartCoroutine(CameraLoad());
+        }
 
     }
     IEnumerator CameraLoad()

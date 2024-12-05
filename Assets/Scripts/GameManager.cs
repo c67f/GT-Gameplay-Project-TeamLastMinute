@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public static int maxTasks = 3; // Number of tasks to assign
 
+    public static int currDay = 1;
+
 
     public class Task
     {
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
     List<int> PossibleTasksNotUsed = new List<int>(PossibleTasksArray);
     public static List<Task> currTasks = new List<Task>(); // Active tasks
     public static int completedTasks = 0; // Completed tasks counter
-    public int tasksNumGoal = 3; // Goal: number of tasks to complete
+    public int tasksNumGoal; // Goal: number of tasks to complete
 
     private void Awake()
     {
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
 
         if (currTasks.Count == 0)
         {
+            currDay++;
             InitializeTasks();
         }
         else
