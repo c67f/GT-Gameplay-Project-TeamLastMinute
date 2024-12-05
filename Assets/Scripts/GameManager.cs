@@ -17,10 +17,7 @@ public class GameManager : MonoBehaviour
         "Use the steering wheel",
         "Trim the sails",
         "Deploy the anchor",
-        "Secure the cannonballs",
-        "Clear the rigging area",
-        "Adjust the rigging",
-        "Check the compass"
+        "Secure the cannonballs"
     };
 
     public static int maxTasks = 3; // Number of tasks to assign
@@ -44,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 }; // Possible task IDs
+    static int[] PossibleTasksArray = { 0, 1, 2, 3 }; // Possible task IDs
     List<int> PossibleTasksNotUsed = new List<int>(PossibleTasksArray);
     public static List<Task> currTasks = new List<Task>(); // Active tasks
     public static int completedTasks = 0; // Completed tasks counter

@@ -12,6 +12,9 @@ public class Interactable : MonoBehaviour
     public int taskID;
     private Renderer targetRenderer;
 
+    public AudioClip interactionSound;    // The sound effect to play
+    private AudioSource audioSource;
+
     void Start()
     {
         // Get the target object's renderer to control visibility
@@ -20,12 +23,27 @@ public class Interactable : MonoBehaviour
             targetRenderer = targetObject.GetComponent<Renderer>();
             targetRenderer.enabled = false;  // Start with the object hidden
         }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Assign the interaction sound to the AudioSource
+        if (interactionSound != null)
+        {
+            audioSource.clip = interactionSound;
+        }
     }
 
-    // Function to trigger interaction actions (e.g., rotating the object)
     public virtual void Interact()
     {
-        // Display text or perform action
+        if (audioSource != null && interactionSound != null)
+        {
+            audioSource.Play();
+            Debug.Log("Interaction sound played!");
+        }
         Debug.Log(interactMessage);
     }
 
