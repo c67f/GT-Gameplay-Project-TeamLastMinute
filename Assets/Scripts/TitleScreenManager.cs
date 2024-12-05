@@ -19,9 +19,14 @@ public class TitleScreenManager : MonoBehaviour
     {
 
     }
-
     void goToStartingCutscene()
     {
         SceneManager.LoadSceneAsync("Opening Cutscene", LoadSceneMode.Single);
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
     }
 }
