@@ -2722,6 +2722,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!1 &435177717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +2945,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!1001 &457258670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3113,7 +3115,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.27
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3580,6 +3582,7 @@ MonoBehaviour:
   animationParameter: IsTall
   targetObject: {fileID: 755279020}
   targetScene: 
+  taskID: 0
 --- !u!1 &561482845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8619,6 +8622,7 @@ MonoBehaviour:
   animationParameter: isSpinning
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!114 &622310847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9738,6 +9742,7 @@ MonoBehaviour:
   animationParameter: IsDoorOpen
   targetObject: {fileID: 0}
   targetScene: 
+  taskID: 0
 --- !u!95 &1088917106
 Animator:
   serializedVersion: 5
@@ -13002,6 +13007,7 @@ MonoBehaviour:
   animationParameter: IsOn
   targetObject: {fileID: 502515982}
   targetScene: 
+  taskID: 0
 --- !u!1001 &1549492120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14286,6 +14292,10 @@ MonoBehaviour:
   task0: {fileID: 550826831}
   task1: {fileID: 745570345}
   task2: {fileID: 186491985}
+  togglesArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1750595979
 GameObject:
   m_ObjectHideFlags: 0
@@ -16017,6 +16027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2108222687}
   - component: {fileID: 2108222688}
+  - component: {fileID: 2108222689}
   m_Layer: 0
   m_Name: SliderManager
   m_TagString: Untagged
@@ -16046,13 +16057,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108222684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229833d90ebd04261aa6d83e6c4b7a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 60
   isPaused: 0
+--- !u!114 &2108222689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108222684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6027f9751e1866c49b15fe6399cd0de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 435177719}
+  maxTime: 60
 --- !u!1001 &2108264886
 PrefabInstance:
   m_ObjectHideFlags: 0
