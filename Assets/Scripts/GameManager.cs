@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 }; // Possible task IDs
+    static int[] PossibleTasksArray = { 0, 1, 2, 3, 4, 5, 6 }; // Possible task IDs
+    List<int> PossibleTasksNotUsed = new List<int>(PossibleTasksArray);
     public static List<Task> currTasks = new List<Task>(); // Active tasks
     public static int completedTasks = 0; // Completed tasks counter
     public int tasksNumGoal = 3; // Goal: number of tasks to complete
@@ -78,7 +79,8 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < maxTasks; i++)
         {
-            int randomTaskIndex = Random.Range(0, PossibleTasksArray.Length);
+            int randomTaskIndex = PossibleTasksNotUsed[Random.Range(0, PossibleTasksNotUsed.Count)];
+            PossibleTasksNotUsed.Remove(randomTaskIndex);
             currTasks.Add(new Task(randomTaskIndex, false)); // Add task to list
             Debug.Log($"Task {currTasks[i].num}: {currTasks[i].taskText} (Completed: {currTasks[i].completed})");
         }
