@@ -6,8 +6,8 @@ public class CannonballSpawner : MonoBehaviour
 {
     public GameObject cannonballPrefab;  // Cannonball prefab
     public Transform player;  // Reference to the player’s position
-    public int cannonballCount = 10;  // Number of cannonballs to spawn
-    public float spawnRange = 10f;  // Range for spawning the cannonballs around the player
+    public int cannonballCount = 5;  // Number of cannonballs to spawn
+    public float spawnRange = 5f;  // Range for spawning the cannonballs around the player
     public float spawnHeight = -1f;  // Height above the ground to spawn the cannonballs
 
     void Start()

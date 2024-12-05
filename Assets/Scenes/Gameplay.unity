@@ -6084,7 +6084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543651343621572609, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5543651345473848479, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
       propertyPath: m_Name
@@ -6092,13 +6092,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543651345473848479, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5543651345473848479, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1182847631}
   m_SourcePrefab: {fileID: 100100000, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
+--- !u!1 &1168585341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5543651345473848479, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
+  m_PrefabInstance: {fileID: 1168585340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1169928156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6244,6 +6252,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5162481053056998949, guid: 1b7403600508b3c4c8b138020893f5e2, type: 3}
   m_PrefabInstance: {fileID: 1168585340}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182847631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168585341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940e736d07ca747aca95529ce5ef2270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactMessage: Press E to Interact
+  animationParameter: 
+  targetObject: {fileID: 0}
+  targetScene: CannonGame
+  taskID: 3
 --- !u!1001 &1201473235
 PrefabInstance:
   m_ObjectHideFlags: 0
